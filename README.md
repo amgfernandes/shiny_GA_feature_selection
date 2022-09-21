@@ -8,7 +8,7 @@ Example with new environment named `shiny`
 ```
 conda create -n shiny python=3.9 -y
 
-conda activate feature_selection
+conda activate shiny
 
 conda install pip -y
 
