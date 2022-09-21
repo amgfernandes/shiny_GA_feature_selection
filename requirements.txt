@@ -1,0 +1,7 @@
+matplotlib
+pandas
+scikit_learn
+seaborn
+shiny
+sklearn_genetic
+sklearn_genetic_opt

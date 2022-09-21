@@ -1,0 +1,17 @@
+INFO:starting time: 20220921_17-43-41
+INFO:Number of generations: 10
+INFO:Number of features max allowed: None
+INFO:Population_size: 10
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.7322834645669292
+INFO:End time: 20220921_17-43-51
+INFO:Max fitness with selection: 0.7523205787169237
+INFO:Selected features:, Index(['Glucose', 'BMI'], dtype='object')
+INFO:Removed features by user:, ('Age',)
+INFO:Total time required: 10.897413969039917 seconds
+INFO:done!
+INFO:Shutting down
+INFO:connection closed
+INFO:Waiting for application shutdown.
+INFO:Application shutdown complete.
+INFO:Finished server process [45807]
