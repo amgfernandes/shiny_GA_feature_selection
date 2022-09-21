@@ -1,4 +1,3 @@
-from pickle import STOP
 from shiny import *
 from shiny.types import FileInfo
 import pandas as pd
