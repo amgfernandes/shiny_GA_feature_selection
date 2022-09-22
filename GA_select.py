@@ -90,6 +90,7 @@ class GA:
         features = evolved_estimator.best_features_
         y_predict_ga = evolved_estimator.predict(X_test_trans.iloc[:,features])
         accuracy = accuracy_score(y_test, y_predict_ga)
+        print(accuracy)
         print(evolved_estimator.best_features_)
               
         plt.figure()
