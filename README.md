@@ -3,6 +3,14 @@
 
 ### Install
 
+First clone this repository:
+
+`git clone https://github.com/amgfernandes/shiny_GA_feature_selection.git`
+
+then go inside the folder created:
+
+`cd shiny_GA_feature_selection`
+
 Example with new environment named `shiny`
 
 ```
