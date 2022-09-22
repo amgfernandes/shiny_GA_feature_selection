@@ -10,3 +10,9 @@ INFO:Selected features:, ['Glucose', 'BloodPressure', 'DiabetesPedigreeFunction'
 INFO:Removed features by user:, ('Age',)
 INFO:Total time required: 9.398383140563965 seconds
 INFO:done!
+INFO:Shutting down
+INFO:connection closed
+INFO:connection closed
+INFO:Waiting for application shutdown.
+INFO:Application shutdown complete.
+INFO:Finished server process [8511]

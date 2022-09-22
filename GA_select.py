@@ -145,8 +145,7 @@ def running (generations, population_size, crossover_probability,
     RESULTS_DIR = outdir
 
     LOG_FILE = os.path.join(RESULTS_DIR , f'log.txt')
-    # if os.path.exists(LOG_FILE):
-    #     os.remove(LOG_FILE)
+
     logging.basicConfig(format='%(levelname)s:%(message)s',
                         level=logging.INFO,
                         handlers=[logging.FileHandler(LOG_FILE),
