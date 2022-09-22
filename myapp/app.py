@@ -1,5 +1,6 @@
 from shiny import *
 from shiny.types import FileInfo
+from shiny.ui import h3
 import pandas as pd
 from GA_select import GA
 import os
@@ -10,6 +11,7 @@ app_ui = ui.page_fluid(
     ui.layout_sidebar(
         ui.panel_sidebar(
             
+            h3("GA Feature selection"),
             ui.input_file("file1", "Choose CSV File", accept=[".csv"], multiple=False),
             ui.output_text("txt"),
             ui.input_checkbox("header", "Header", True),
