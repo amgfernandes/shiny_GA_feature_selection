@@ -46,5 +46,5 @@ pip install -r requirements.txt
 
 ### Alternatively you can use this web deployed version on Shinyapps.io:
 
-- https://amgfernandes.shinyapps.io/shiny_ga_feature1/
+- https://amgfernandes.shinyapps.io/shiny_ga_feature11/
 
