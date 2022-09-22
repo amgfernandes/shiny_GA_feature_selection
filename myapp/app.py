@@ -1,4 +1,3 @@
-from select import select
 from shiny import *
 from shiny.types import FileInfo
 import pandas as pd

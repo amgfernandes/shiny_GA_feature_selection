@@ -41,3 +41,10 @@ pip install -r requirements.txt
 <br>
 
 <img src="img/shiny_vscode.png" alt="Screenshot_browser" width="1200"/>
+
+<br>
+
+### Alternatively you can use this web deployed version on Shinyapps.io:
+
+- https://amgfernandes.shinyapps.io/shiny_ga_feature1/
+
