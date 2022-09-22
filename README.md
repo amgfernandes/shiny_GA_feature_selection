@@ -23,7 +23,7 @@ conda install pip -y
 pip install -r requirements.txt
  ```
 
-You can then run shiny lik:
+You can then run the Shiny app with the following:
 
 `shiny run --reload app.py`
 
