@@ -3,6 +3,8 @@ from shiny.types import FileInfo
 import pandas as pd
 from GA_select import parameters,split_transform_data, data_process
 import os
+import matplotlib.pyplot as plt
+
 
 
 app_ui = ui.page_fluid(
@@ -12,9 +14,9 @@ app_ui = ui.page_fluid(
             ui.input_file("file1", "Choose CSV File", accept=[".csv"], multiple=False),
             ui.output_text("txt"),
             ui.input_checkbox("header", "Header", True),
-            ui.input_numeric("Generations", "Number of generations", value = 10, step =1),
-            ui.input_numeric("Size", "Population size", value = 10, step =1),
-            ui.input_numeric("Crossover", "Crossover probability", value = 0.1, step =0.1),
+            ui.input_numeric("Generations", "Number of generations", value = 4, step =1, max=100),
+            ui.input_numeric("Size", "Population size", value = 4, step =1),
+            ui.input_numeric("Crossover", "Crossover probability", value = 0.1, step =0.1, max=0.5),
             ui.input_numeric("Max_features_number", "Max Features number", value = None, step=10),
             
         
@@ -26,10 +28,14 @@ app_ui = ui.page_fluid(
             
             ui.input_action_button("run", "Run Feature selection"),
             ui.output_text_verbatim("done", placeholder=True),
-
+            ui.output_table("table"),
+            
             
         ),
-        ui.panel_main(ui.output_ui("contents")),
+        ui.panel_main(ui.output_ui("contents"),
+                      ui.output_plot("plot_fitness"),),
+        
+
     )
 )
 
@@ -60,13 +66,15 @@ def server(input: Inputs, output: Outputs, session: Session):
 
 
 
-        # The @reactive.event() causes the function to run only when input.btn is
+        # The @reactive.event() causes the function to run only when input.run is
         # invalidated.
         @reactive.Effect
         @reactive.event(input.run)
-        def _():
-            #req(input.update())
+        def table():
+
             ui.update_action_button("run")
+            ui.notification_show("Feature selection is running. Results will be plotted when run is finished!", type="message", duration=None)
+            
             Target = input.Targets.get()
             Generations = input.Generations.get()
             Size = input.Size.get()
@@ -82,16 +90,25 @@ def server(input: Inputs, output: Outputs, session: Session):
             clf, X_train_trans, X_test_trans, y_test, y_train, accuracy_no_GA  = split_transform_data(X = X, y= y)
 
 
-            hr_start_time = parameters (generations = Generations, population_size =  Size, 
+            hr_start_time, plot = parameters (generations = Generations, population_size =  Size, 
             crossover_probability = Crossover, max_features = Max_features_number,
             outdir = outdir, clf = clf, X_train_trans = X_train_trans, 
             X_test_trans =X_test_trans, y_test =y_test, y_train = y_train,  accuracy_no_GA =  accuracy_no_GA, additional_columns =columns_to_drop)
+            
+            
             ui.notification_show("Feature selection is done", type="message", duration=None)
 
-    
+            
+            
+            @output
+            @render.plot(alt="Fitness plot")
+            def plot_fitness():
+                    fig = plot
+                    return (fig)
+        
         return ui.HTML(df.head(10).to_html(classes="table table-striped"))
 
-    
+
     @output
     @render.text
     def txt():

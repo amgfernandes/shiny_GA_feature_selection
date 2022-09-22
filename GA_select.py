@@ -66,6 +66,7 @@ clf, X_train_trans, X_test_trans, y_test, y_train):
         generations=generations,
         n_jobs=-1,
         crossover_probability=crossover_probability,
+        mutation_probability=0.05,
         verbose=True,
         max_features= max_features,
         keep_top_k=3,
@@ -78,15 +79,19 @@ clf, X_train_trans, X_test_trans, y_test, y_train):
     y_predict_ga = evolved_estimator.predict(X_test_trans.iloc[:,features])
     accuracy = accuracy_score(y_test, y_predict_ga)
     print(evolved_estimator.best_features_)
+    
     plt.figure()
-    plot_fitness_evolution(evolved_estimator, metric="fitness")
+    plot = plot_fitness_evolution(evolved_estimator, metric="fitness")
     plt.savefig('fitness.png')
 
     #print(f'Selected features:', X_test_trans.iloc[:,features].columns)
     selected_features= X_test_trans.iloc[:,features].columns
     cv_results= evolved_estimator.cv_results_
     history= evolved_estimator.history
-    return cv_results, history, selected_features
+    
+
+    
+    return cv_results, history, selected_features, plot
 
 
 def main(generations, population_size, crossover_probability, 
@@ -94,7 +99,7 @@ def main(generations, population_size, crossover_probability,
                 y_test, y_train, hr_start_time):
     print("Running main function")
 
-    cv_results, history, selected_features =run_GA(generations=generations,
+    cv_results, history, selected_features, plot =run_GA(generations=generations,
                                 population_size=population_size,
                                 crossover_probability=crossover_probability,
                                 max_features=max_features,
@@ -113,9 +118,11 @@ def main(generations, population_size, crossover_probability,
     plt.savefig('history_results.png')
 
     pd.DataFrame(selected_features).to_csv(str(hr_start_time) +'_selected_features.csv')
+    
 
-    return history_df, selected_features
 
+
+    return history_df, selected_features, plot
 
 
 def parameters (generations, population_size, crossover_probability, 
@@ -126,28 +133,31 @@ def parameters (generations, population_size, crossover_probability,
     crossover_probability =float(crossover_probability)
 
     if max_features is not None:
-        print ("max_features has been set (value is %s)", max_features)
+        print (f"max_features has been set (value is %s)", max_features)
         max_features = int(max_features)
     else:
         max_features = None
-        print ("max_features has not been set (value is %s)",  max_features)
+        print (f"max_features has not been set (value is %s)",  max_features)
 
+
+
+    start_time = time.time()
+    hr_start_time = datetime.datetime.fromtimestamp(start_time).strftime('%Y%m%d_%H-%M-%S')
+    
     RESULTS_DIR = outdir
 
-    LOG_FILE = os.path.join(RESULTS_DIR, f'log.txt')
+    LOG_FILE = os.path.join(RESULTS_DIR , str(hr_start_time) +f'_log.txt')
     if os.path.exists(LOG_FILE):
         os.remove(LOG_FILE)
     logging.basicConfig(format='%(levelname)s:%(message)s',
                         level=logging.INFO,
                         handlers=[logging.FileHandler(LOG_FILE),
                         logging.StreamHandler()])
-
-    start_time = time.time()
-    hr_start_time = datetime.datetime.fromtimestamp(start_time).strftime('%Y%m%d_%H-%M-%S')
+    
     logging.info(f"starting time: {hr_start_time}")
 
 
-    history_df, selected_features = main(generations, population_size, crossover_probability, 
+    history_df, selected_features, plot = main(generations, population_size, crossover_probability, 
                 max_features, outdir, clf, X_train_trans, X_test_trans, y_test, y_train, hr_start_time)
 
 
@@ -165,4 +175,4 @@ def parameters (generations, population_size, crossover_probability,
 
     logging.info(TOTAL_TIME)
     logging.info('done!')
-    return hr_start_time
+    return hr_start_time, plot
