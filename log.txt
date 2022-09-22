@@ -1,0 +1,12 @@
+INFO:starting time: 20220922_14-46-42
+INFO:Number of generations: 4
+INFO:Number of features max allowed: None
+INFO:Population_size: 4
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.7322834645669292
+INFO:End time: 20220922_14-46-52
+INFO:Max fitness with selection: 0.7393108699790596
+INFO:Selected features:, ['Glucose', 'BloodPressure', 'DiabetesPedigreeFunction']
+INFO:Removed features by user:, ('Age',)
+INFO:Total time required: 9.398383140563965 seconds
+INFO:done!

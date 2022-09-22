@@ -84,8 +84,8 @@ clf, X_train_trans, X_test_trans, y_test, y_train):
     plot = plot_fitness_evolution(evolved_estimator, metric="fitness")
     plt.savefig('fitness.png')
 
-    #print(f'Selected features:', X_test_trans.iloc[:,features].columns)
-    selected_features= X_test_trans.iloc[:,features].columns
+
+    selected_features= list(X_test_trans.iloc[:,features].columns)
     cv_results= evolved_estimator.cv_results_
     history= evolved_estimator.history
     
@@ -120,12 +120,10 @@ def main(generations, population_size, crossover_probability,
     pd.DataFrame(selected_features).to_csv(str(hr_start_time) +'_selected_features.csv')
     
 
-
-
     return history_df, selected_features, plot
 
 
-def parameters (generations, population_size, crossover_probability, 
+def running (generations, population_size, crossover_probability, 
                 max_features, outdir, clf, X_train_trans, X_test_trans,
                 y_test, y_train, accuracy_no_GA, additional_columns):  
     generations = int(generations)
@@ -133,11 +131,11 @@ def parameters (generations, population_size, crossover_probability,
     crossover_probability =float(crossover_probability)
 
     if max_features is not None:
-        print (f"max_features has been set (value is %s)", max_features)
+        print (f'max_features has been set (value is {max_features})')
         max_features = int(max_features)
     else:
         max_features = None
-        print (f"max_features has not been set (value is %s)",  max_features)
+        print (f'max_features has not been set (value is  max_features)')
 
 
 
@@ -146,9 +144,9 @@ def parameters (generations, population_size, crossover_probability,
     
     RESULTS_DIR = outdir
 
-    LOG_FILE = os.path.join(RESULTS_DIR , str(hr_start_time) +f'_log.txt')
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
+    LOG_FILE = os.path.join(RESULTS_DIR , f'log.txt')
+    # if os.path.exists(LOG_FILE):
+    #     os.remove(LOG_FILE)
     logging.basicConfig(format='%(levelname)s:%(message)s',
                         level=logging.INFO,
                         handlers=[logging.FileHandler(LOG_FILE),
@@ -175,4 +173,4 @@ def parameters (generations, population_size, crossover_probability,
 
     logging.info(TOTAL_TIME)
     logging.info('done!')
-    return hr_start_time, plot
+    return hr_start_time, plot, selected_features

@@ -1,7 +1,8 @@
+from select import select
 from shiny import *
 from shiny.types import FileInfo
 import pandas as pd
-from GA_select import parameters,split_transform_data, data_process
+from GA_select import running,split_transform_data, data_process
 import os
 import matplotlib.pyplot as plt
 
@@ -16,8 +17,8 @@ app_ui = ui.page_fluid(
             ui.input_checkbox("header", "Header", True),
             ui.input_numeric("Generations", "Number of generations", value = 4, step =1, max=100),
             ui.input_numeric("Size", "Population size", value = 4, step =1),
-            ui.input_numeric("Crossover", "Crossover probability", value = 0.1, step =0.1, max=0.5),
-            ui.input_numeric("Max_features_number", "Max Features number", value = None, step=10),
+            ui.input_numeric("Crossover", "Crossover probability", value = 0.1, step =0.1, max=0.9),
+        
             
         
             ui.input_select("Targets", "Target Variable", choices = [], selected = None, 
@@ -27,20 +28,22 @@ app_ui = ui.page_fluid(
             multiple=True),
             
             ui.input_action_button("run", "Run Feature selection"),
-            ui.output_text_verbatim("done", placeholder=True),
+            ui.output_text_verbatim("Done", placeholder=True),
             ui.output_table("table"),
+            
             
             
         ),
         ui.panel_main(ui.output_ui("contents"),
-                      ui.output_plot("plot_fitness"),),
+                      ui.output_plot("plot_fitness"),
+                      ui.output_text("features"),
+                      ),
         
 
     )
 )
 
-
-
+'''Server'''
 def server(input: Inputs, output: Outputs, session: Session):
     @output
     @render.ui
@@ -79,9 +82,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             Generations = input.Generations.get()
             Size = input.Size.get()
             Crossover = input.Crossover.get()
-            Max_features_number = input.Max_features_number.get()
-
-        
+            
             outdir = os.getcwd()
 
             columns_to_drop =  input.Drop.get()
@@ -90,8 +91,8 @@ def server(input: Inputs, output: Outputs, session: Session):
             clf, X_train_trans, X_test_trans, y_test, y_train, accuracy_no_GA  = split_transform_data(X = X, y= y)
 
 
-            hr_start_time, plot = parameters (generations = Generations, population_size =  Size, 
-            crossover_probability = Crossover, max_features = Max_features_number,
+            hr_start_time, plot, selected_features = running(generations = Generations, population_size =  Size, 
+            crossover_probability = Crossover, max_features = None,
             outdir = outdir, clf = clf, X_train_trans = X_train_trans, 
             X_test_trans =X_test_trans, y_test =y_test, y_train = y_train,  accuracy_no_GA =  accuracy_no_GA, additional_columns =columns_to_drop)
             
@@ -105,6 +106,13 @@ def server(input: Inputs, output: Outputs, session: Session):
             def plot_fitness():
                     fig = plot
                     return (fig)
+  
+            @output
+            @render.text
+            def features():
+                            
+                sel = (', '.join(selected_features))
+                return f'Selected features: "{sel}"'
         
         return ui.HTML(df.head(10).to_html(classes="table table-striped"))
 
@@ -114,7 +122,6 @@ def server(input: Inputs, output: Outputs, session: Session):
     def txt():
         if input.file1() is not None:
             return f'Only a part of the data is shown'
-
-
+        
 
 app = App(app_ui, server)
