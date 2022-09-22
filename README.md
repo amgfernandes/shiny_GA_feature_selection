@@ -11,12 +11,12 @@ then go inside the folder created:
 
 `cd shiny_GA_feature_selection`
 
-Example with new environment named `shiny`
+Example with new environment named `shiny_GA_feature_selection`
 
 ```
-conda create -n shiny python=3.9 -y
+conda create -n shiny_GA_feature_selection python=3.9 -y
 
-conda activate shiny
+conda activate shiny_GA_feature_selection
 
 conda install pip -y
 
