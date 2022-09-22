@@ -67,11 +67,13 @@ def server(input: Inputs, output: Outputs, session: Session):
             outdir = os.getcwd()
             columns_to_drop =  input.Drop.get()
             
-            X, y, drop = GA.data_process(dataset = dataset, target = Target, drop = columns_to_drop)
+            GA_run = GA(dataset = dataset, target = Target, drop = columns_to_drop)
+            X, y, drop = GA_run.data_process()
+            
             clf, X_train_trans, X_test_trans, y_test, y_train, accuracy_no_GA  = GA.split_transform_data(X = X, y= y)
 
 
-            hr_start_time, plot, selected_features = GA.running(generations = Generations, 
+            selected_features, plot = GA.run_GA(generations = Generations, 
                                                             population_size =  Size, 
                                                             crossover_probability = Crossover, 
                                                             max_features = None,
@@ -83,8 +85,7 @@ def server(input: Inputs, output: Outputs, session: Session):
                                                             y_train = y_train,  
                                                             accuracy_no_GA =  accuracy_no_GA, 
                                                             additional_columns =columns_to_drop)
-            
-            
+
             ui.notification_show("Feature selection is done", type="message", duration=None)
 
             @output

@@ -18,24 +18,32 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 
 
+
 class GA:
+    '''[summary] 
+    Class with functions for GA feature selection analysis'''
+       
     def __init__(self, dataset, target, drop):
-       self.dataset = dataset
-       self.target =  target
-       self.drop = drop
+        '''Loads the dataset
+        :param target: target column
+        :param drop: feature to drop define by the user'''
         
-    def data_process(dataset, target, drop):
+        self.dataset = dataset
+        self.target =  target
+        self.drop = drop
+
+    def data_process(self):
         '''data and labels'''
-        Label=dataset[target]
+        Label=self.dataset[self.target]
         le = preprocessing.LabelEncoder()
         y = le.fit_transform(Label)
         
-        if drop is not None: 
-            additional_columns= list(drop)
-            X = dataset.drop(columns=additional_columns)
-            X = X.drop(columns=[target])
+        if self.drop is not None: 
+            additional_columns= list(self.drop)
+            X = self.dataset.drop(columns=additional_columns)
+            X = X.drop(columns=[self.target])
         else:
-            X = dataset.drop(columns= [target])
+            X = self.dataset.drop(columns= [self.target])
 
         return X, y, additional_columns
 
@@ -57,36 +65,10 @@ class GA:
         print("accuracy score without GA selection: ", "{:.2}".format(accuracy_no_GA))
         return clf, X_train_trans, X_test_trans, y_test, y_train, accuracy_no_GA 
 
-  
-    def main(generations, population_size, crossover_probability, 
-                max_features, outdir, clf, X_train_trans, X_test_trans, 
-                y_test, y_train, hr_start_time):
-        print("Running main function")
 
-        cv_results, history, selected_features, plot = GA.run_GA(generations=generations,
-                                    population_size=population_size,
-                                    crossover_probability=crossover_probability,
-                                    max_features=max_features,
-                                    clf = clf, X_train_trans = X_train_trans,
-                                    X_test_trans = X_test_trans, 
-                                    y_test = y_test,
-                                    y_train = y_train)
-
-        results_df= pd.DataFrame(cv_results)
-        results_df.to_csv('results_df.csv')
-
-        history_df= pd.DataFrame(history)
-        history_df.to_csv('history_df.csv')
-
-        plt.figure()
-        sns.violinplot(data=history_df.iloc[:,1:])
-        plt.savefig('history_results.png')
-
-        pd.DataFrame(selected_features).to_csv(str(hr_start_time) +'_selected_features.csv')
-        return history_df, selected_features, plot
-
-    def run_GA(generations,population_size,crossover_probability,max_features,
-        clf, X_train_trans, X_test_trans, y_test, y_train):
+    def run_GA (generations, population_size, crossover_probability, 
+                    max_features, outdir, clf, X_train_trans, X_test_trans,
+                    y_test, y_train, accuracy_no_GA, additional_columns):
 
         evolved_estimator = GAFeatureSelectionCV(
             estimator=clf,
@@ -109,20 +91,15 @@ class GA:
         y_predict_ga = evolved_estimator.predict(X_test_trans.iloc[:,features])
         accuracy = accuracy_score(y_test, y_predict_ga)
         print(evolved_estimator.best_features_)
-        
+              
         plt.figure()
         plot = plot_fitness_evolution(evolved_estimator, metric="fitness")
         plt.savefig('fitness.png')
-
-
         selected_features= list(X_test_trans.iloc[:,features].columns)
         cv_results= evolved_estimator.cv_results_
         history= evolved_estimator.history
-        return cv_results, history, selected_features, plot
+        
     
-    def running (generations, population_size, crossover_probability, 
-                    max_features, outdir, clf, X_train_trans, X_test_trans,
-                    y_test, y_train, accuracy_no_GA, additional_columns):  
         generations = int(generations)
         population_size = int(population_size)
         crossover_probability =float(crossover_probability)
@@ -133,9 +110,26 @@ class GA:
         else:
             max_features = None
             print (f'max_features has not been set (value is  max_features)')
-
+            
         start_time = time.time()
         hr_start_time = datetime.datetime.fromtimestamp(start_time).strftime('%Y%m%d_%H-%M-%S')
+        
+        print("Running main function")
+
+
+        results_df= pd.DataFrame(cv_results)
+        results_df.to_csv('results_df.csv')
+
+        history_df= pd.DataFrame(history)
+        history_df.to_csv('history_df.csv')
+
+        plt.figure()
+        sns.violinplot(data=history_df.iloc[:,1:])
+        plt.savefig('history_results.png')
+
+        pd.DataFrame(selected_features).to_csv(str(hr_start_time) +'_selected_features.csv')
+
+
         
         RESULTS_DIR = outdir
         LOG_FILE = os.path.join(RESULTS_DIR , f'log.txt')
@@ -145,10 +139,6 @@ class GA:
                             logging.StreamHandler()])
         
         logging.info(f"starting time: {hr_start_time}")
-
-
-        history_df, selected_features, plot = GA.main(generations, population_size, crossover_probability, 
-                    max_features, outdir, clf, X_train_trans, X_test_trans, y_test, y_train, hr_start_time)
 
 
         TOTAL_TIME = f'Total time required: {time.time() - start_time} seconds'
@@ -165,4 +155,4 @@ class GA:
 
         logging.info(TOTAL_TIME)
         logging.info('done!')
-        return hr_start_time, plot, selected_features
+        return selected_features, plot         

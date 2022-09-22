@@ -1,12 +1,12 @@
-INFO:starting time: 20220922_16-14-50
+INFO:starting time: 20220922_17-34-49
 INFO:Number of generations: 4
 INFO:Number of features max allowed: None
 INFO:Population_size: 4
 INFO:Crossover_probability: 0.1
 INFO:Max accuracy with all features: 0.7362204724409449
-INFO:End time: 20220922_16-14-59
-INFO:Max fitness with selection: 0.6420331239291833
-INFO:Selected features:, ['SkinThickness', 'BMI']
-INFO:Removed features by user:, ('Pregnancies', 'Age')
-INFO:Total time required: 9.120035886764526 seconds
+INFO:End time: 20220922_17-34-50
+INFO:Max fitness with selection: 0.6595278888254331
+INFO:Selected features:, ['SkinThickness', 'Insulin', 'BMI']
+INFO:Removed features by user:, ('Age', 'Pregnancies')
+INFO:Total time required: 0.3752009868621826 seconds
 INFO:done!
