@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 ### You can then run the Shiny app with the following:
 
-`shiny run --reload app.py`
+`shiny run --reload myapp/app.py`
 
 -  open a browser with following link: http://localhost:8000:
 
