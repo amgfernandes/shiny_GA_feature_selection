@@ -22,7 +22,7 @@ conda activate shiny_GA_feature_selection
 
 conda install pip -y
 
-pip install -r requirements.txt
+pip install -r myapp/requirements.txt
  ```
 
 ### You can then run the Shiny app with the following:
