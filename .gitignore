@@ -4,3 +4,6 @@ __pycache__/GA_select.cpython-310.pyc
 __pycache__/app.cpython-39.pyc
 __pycache__/GA_select.cpython-39.pyc
 *.pyc
+**.csv
+
+.vscode/settings.json

@@ -1,0 +1,192 @@
+INFO:starting time: 20240322_15-22-28
+INFO:Number of generations: 4
+INFO:Number of features max allowed: None
+INFO:Population_size: 4
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-22-29
+INFO:Max fitness with selection: 0.8615384615384617
+INFO:Selected features:, ['MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)', 'MDVP:Jitter(Abs)', 'Jitter:DDP', 'MDVP:Shimmer(dB)', 'Shimmer:APQ5', 'HNR', 'DFA', 'spread1', 'spread2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.22096776962280273 seconds
+INFO:done!
+INFO:starting time: 20240322_15-22-46
+INFO:Number of generations: 4
+INFO:Number of features max allowed: None
+INFO:Population_size: 4
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-22-46
+INFO:Max fitness with selection: 0.853846153846154
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:RAP', 'Jitter:DDP', 'MDVP:Shimmer(dB)', 'Shimmer:APQ3', 'Shimmer:APQ5', 'MDVP:APQ', 'Shimmer:DDA', 'HNR', 'RPDE', 'DFA', 'spread1', 'spread2']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.14047980308532715 seconds
+INFO:done!
+INFO:starting time: 20240322_15-23-31
+INFO:Number of generations: 4
+INFO:Number of features max allowed: None
+INFO:Population_size: 4
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-23-32
+INFO:Max fitness with selection: 0.85
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)', 'Jitter:DDP', 'Shimmer:APQ5', 'NHR', 'RPDE', 'spread2']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.22619199752807617 seconds
+INFO:done!
+INFO:starting time: 20240322_15-24-28
+INFO:Number of generations: 7
+INFO:Number of features max allowed: None
+INFO:Population_size: 4
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-24-28
+INFO:Max fitness with selection: 0.8692307692307694
+INFO:Selected features:, ['MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(Abs)', 'MDVP:Shimmer', 'Shimmer:APQ5', 'NHR', 'RPDE', 'DFA', 'spread2', 'D2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.12719011306762695 seconds
+INFO:done!
+INFO:starting time: 20240322_15-24-33
+INFO:Number of generations: 10
+INFO:Number of features max allowed: None
+INFO:Population_size: 4
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-24-33
+INFO:Max fitness with selection: 0.8692307692307694
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:Jitter(%)', 'MDVP:RAP', 'MDVP:PPQ', 'Jitter:DDP', 'MDVP:Shimmer', 'MDVP:Shimmer(dB)', 'NHR', 'RPDE', 'spread2', 'D2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.15675973892211914 seconds
+INFO:done!
+INFO:starting time: 20240322_15-24-37
+INFO:Number of generations: 10
+INFO:Number of features max allowed: None
+INFO:Population_size: 8
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-24-37
+INFO:Max fitness with selection: 0.8615384615384618
+INFO:Selected features:, ['MDVP:Fo(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)', 'MDVP:PPQ', 'Jitter:DDP', 'MDVP:Shimmer', 'MDVP:Shimmer(dB)', 'NHR', 'HNR', 'RPDE', 'spread1', 'spread2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.16908717155456543 seconds
+INFO:done!
+INFO:starting time: 20240322_15-27-17
+INFO:Number of generations: 10
+INFO:Number of features max allowed: None
+INFO:Population_size: 8
+INFO:Crossover_probability: 0.3
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-27-17
+INFO:Max fitness with selection: 0.8769230769230771
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:PPQ', 'MDVP:Shimmer(dB)', 'RPDE', 'spread2', 'D2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.12842607498168945 seconds
+INFO:done!
+INFO:starting time: 20240322_15-29-43
+INFO:Number of generations: 10
+INFO:Number of features max allowed: None
+INFO:Population_size: 8
+INFO:Crossover_probability: 0.3
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-29-43
+INFO:Max fitness with selection: 0.8615384615384614
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)', 'MDVP:Jitter(Abs)', 'MDVP:PPQ', 'MDVP:Shimmer', 'Shimmer:APQ5', 'NHR', 'RPDE', 'spread1', 'spread2']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.16462111473083496 seconds
+INFO:done!
+INFO:starting time: 20240322_15-30-22
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 8
+INFO:Crossover_probability: 0.3
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-30-22
+INFO:Max fitness with selection: 0.8615384615384618
+INFO:Selected features:, ['MDVP:Fo(Hz)', 'MDVP:Jitter(Abs)', 'MDVP:RAP', 'Jitter:DDP', 'MDVP:Shimmer', 'Shimmer:APQ3', 'MDVP:APQ', 'Shimmer:DDA', 'HNR', 'RPDE', 'DFA', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.14580392837524414 seconds
+INFO:done!
+INFO:starting time: 20240322_15-30-31
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 8
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-30-31
+INFO:Max fitness with selection: 0.8538461538461537
+INFO:Selected features:, ['MDVP:Fo(Hz)', 'MDVP:Flo(Hz)', 'MDVP:PPQ', 'Jitter:DDP', 'Shimmer:APQ5', 'MDVP:APQ', 'HNR', 'RPDE', 'DFA', 'spread1', 'spread2', 'D2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.1205909252166748 seconds
+INFO:done!
+INFO:starting time: 20240322_15-43-47
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 8
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-43-47
+INFO:Max fitness with selection: 0.8692307692307695
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:PPQ', 'MDVP:Shimmer(dB)', 'Shimmer:APQ3', 'MDVP:APQ', 'NHR', 'HNR', 'spread1']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.24595308303833008 seconds
+INFO:done!
+INFO:starting time: 20240322_15-45-12
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 11
+INFO:Crossover_probability: 0.1
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-45-13
+INFO:Max fitness with selection: 0.8615384615384619
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:Jitter(Abs)', 'MDVP:RAP', 'MDVP:PPQ', 'MDVP:Shimmer(dB)', 'Shimmer:APQ3', 'RPDE', 'spread2', 'D2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.14082622528076172 seconds
+INFO:done!
+INFO:starting time: 20240322_15-45-22
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 11
+INFO:Crossover_probability: 0.4
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-45-22
+INFO:Max fitness with selection: 0.8769230769230772
+INFO:Selected features:, ['MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)', 'MDVP:PPQ', 'MDVP:Shimmer(dB)', 'Shimmer:DDA', 'RPDE', 'spread2', 'PPE']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.14608407020568848 seconds
+INFO:done!
+INFO:starting time: 20240322_15-45-29
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 11
+INFO:Crossover_probability: 0.6
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-45-29
+INFO:Max fitness with selection: 0.8391608391608391
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)', 'MDVP:RAP', 'MDVP:PPQ', 'MDVP:Shimmer(dB)', 'Shimmer:APQ5', 'NHR', 'RPDE', 'spread2']
+INFO:Removed features by user:, ('name',)
+INFO:Total time required: 0.14946484565734863 seconds
+INFO:done!
+INFO:starting time: 20240322_15-46-08
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 11
+INFO:Crossover_probability: 0.6
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-46-08
+INFO:Max fitness with selection: 0.8692307692307696
+INFO:Selected features:, ['MDVP:Fhi(Hz)', 'MDVP:Jitter(%)', 'MDVP:Jitter(Abs)', 'MDVP:RAP', 'MDVP:PPQ', 'MDVP:Shimmer', 'MDVP:APQ', 'HNR', 'RPDE', 'DFA', 'spread2', 'PPE']
+INFO:Removed features by user:, ('name', 'MDVP:Fo(Hz)')
+INFO:Total time required: 0.14792895317077637 seconds
+INFO:done!
+INFO:starting time: 20240322_15-46-17
+INFO:Number of generations: 14
+INFO:Number of features max allowed: None
+INFO:Population_size: 11
+INFO:Crossover_probability: 0.6
+INFO:Max accuracy with all features: 0.9230769230769231
+INFO:End time: 20240322_15-46-17
+INFO:Max fitness with selection: 0.8615384615384619
+INFO:Selected features:, ['MDVP:Flo(Hz)', 'MDVP:Jitter(%)', 'MDVP:Jitter(Abs)', 'MDVP:RAP', 'MDVP:PPQ', 'Jitter:DDP', 'MDVP:APQ', 'HNR', 'RPDE', 'DFA', 'spread1', 'spread2']
+INFO:Removed features by user:, ('name', 'MDVP:Fo(Hz)', 'D2')
+INFO:Total time required: 0.13900113105773926 seconds
+INFO:done!

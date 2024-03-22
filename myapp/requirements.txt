@@ -1,7 +1,7 @@
-matplotlib
-pandas
-scikit_learn
-seaborn
-shiny
-sklearn_genetic
-sklearn_genetic_opt
+matplotlib==3.8.3
+pandas==1.5
+scikit_learn==1.4.1
+seaborn==0.13.2
+shiny== 0.8.1
+sklearn_genetic==0.3.0
+sklearn_genetic_opt== 0.9
