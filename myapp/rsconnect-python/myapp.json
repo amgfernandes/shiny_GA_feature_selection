@@ -1,11 +1,12 @@
 {
     "https://api.shinyapps.io": {
         "server_url": "https://api.shinyapps.io",
-        "filename": "/Users/fernandes/Documents/GitHub/shiny_GA_feature_selection/myapp",
+        "filename": "/Users/miguel.fernandes/Downloads/shiny_GA_feature_selection/myapp",
         "app_url": "https://amgfernandes.shinyapps.io/shiny_ga_feature/",
-        "app_id": 8721161,
+        "app_id": 11575394,
         "app_guid": null,
         "title": "shiny_ga_feature",
-        "app_mode": "python-shiny"
+        "app_mode": "python-shiny",
+        "app_store_version": 1
     }
 }

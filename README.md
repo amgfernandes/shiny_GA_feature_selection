@@ -48,3 +48,5 @@ pip install -r myapp/requirements.txt
 
 - https://amgfernandes.shinyapps.io/shiny_ga_feature/
 
+### deploy with: `rsconnect deploy shiny . --name amgfernandes --title shiny_ga_feature` 
+
